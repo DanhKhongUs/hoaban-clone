@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Product } from "~/types/Product";
 import { productCardConfig } from "~/config/productCardConfig";
 
-export default function ProductCard({
+export default function SouvenirCard({
   souvenir,
 }: {
   souvenir: Product & { type?: string };

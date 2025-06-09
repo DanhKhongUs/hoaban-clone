@@ -4,6 +4,7 @@ import { faPhone, faHouse } from "@fortawesome/free-solid-svg-icons";
 import SectionTitle from "~/components/SectionTitle";
 import { Connect } from "~/data/connectItem";
 import { useState } from "react";
+import ProductCatalog from "~/components/ProductCatalog";
 
 interface ContactProps {
   name: string;
@@ -188,139 +189,7 @@ function Contact() {
           </div>
         </div>
 
-        {/* === SIDE MENU === */}
-        <aside className="space-y-8">
-          <div>
-            <h3 className="font-bold text-lg mb-2 border-b pb-2">
-              DANH MỤC SP
-              <hr className="w-8 border border-[#c0b49f]" />
-            </h3>
-            <ul className="space-y-2 text-sm text-[#444]">
-              <li>
-                <a href="#" className="hover:text-pink-700">
-                  MẬT ONG & TAM THẤT
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-pink-700">
-                  THỰC PHẨM & GIA VỊ
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-pink-700">
-                  RƯỢU & ĐỒ NGÂM RƯỢU
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-pink-700">
-                  QUÀ LƯU NIỆM
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <img
-              src="https://hoabanfood.com/wp-content/uploads/Mat-Ong-Rung-Song-Da-2022-banner-1.jpg"
-              alt="Banner"
-              className="w-full rounded shadow"
-            />
-          </div>
-
-          <div>
-            <h4 className="font-bold text-base border-b pb-2 mb-2">
-              SẢN PHẨM VỪA XEM
-              <hr className="w-8 border border-[#c0b49f]" />
-            </h4>
-            <div className="flex items-center space-x-3">
-              <img
-                src="https://hoabanfood.com/wp-content/uploads/2019/07/Ruou-Cu-Tam-That.jpg"
-                alt="Rượu củ tam thất"
-                className="w-12 h-12 object-cover"
-              />
-              <div>
-                <p className="text-sm font-semibold text-[#222]">
-                  RƯỢU CỦ TAM THẤT
-                </p>
-                <p className="text-sm text-[#444]">
-                  Giá từ: <strong>890,000₫</strong>
-                </p>
-              </div>
-            </div>
-            <div>
-              <img
-                src="https://hoabanfood.com/wp-content/uploads/Mat-Ong-Rung-Song-Da-2022-banner-1.jpg"
-                alt="Banner"
-                className="w-full rounded shadow"
-              />
-            </div>
-          </div>
-          <div>
-            <h4 className="font-bold text-base border-b pb-2 mb-2">
-              SẢN PHẨM NỔI BẬT
-              <hr className="w-8 border border-[#c0b49f]" />
-            </h4>
-            <div className="flex items-center space-x-3">
-              <img
-                src="https://hoabanfood.com/wp-content/uploads/2019/07/Ruou-Cu-Tam-That.jpg"
-                alt="Rượu củ tam thất"
-                className="w-12 h-12 object-cover"
-              />
-              <div>
-                <p className="text-sm font-semibold text-[#222]">
-                  RƯỢU CỦ TAM THẤT
-                </p>
-                <p className="text-sm text-[#444]">
-                  Giá từ: <strong>890,000₫</strong>
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-3">
-              <img
-                src="https://hoabanfood.com/wp-content/uploads/2019/07/Ruou-Cu-Tam-That.jpg"
-                alt="Rượu củ tam thất"
-                className="w-12 h-12 object-cover"
-              />
-              <div>
-                <p className="text-sm font-semibold text-[#222]">
-                  RƯỢU CỦ TAM THẤT
-                </p>
-                <p className="text-sm text-[#444]">
-                  Giá từ: <strong>890,000₫</strong>
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-3">
-              <img
-                src="https://hoabanfood.com/wp-content/uploads/2019/07/Ruou-Cu-Tam-That.jpg"
-                alt="Rượu củ tam thất"
-                className="w-12 h-12 object-cover"
-              />
-              <div>
-                <p className="text-sm font-semibold text-[#222]">
-                  RƯỢU CỦ TAM THẤT
-                </p>
-                <p className="text-sm text-[#444]">
-                  Giá từ: <strong>890,000₫</strong>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <h4 className="font-bold text-base border-b pb-2 mb-2">
-              ĐỒ CẮM TRẠI DÃ NGOẠI
-              <hr className="w-8 border border-[#c0b49f]" />
-            </h4>
-          </div>
-          <div>
-            <img
-              src="https://hoabanfood.com/wp-content/uploads/Mat-Ong-Rung-Song-Da-2022-banner-1.jpg"
-              alt="Banner"
-              className="w-full rounded shadow"
-            />
-          </div>
-        </aside>
+        <ProductCatalog />
       </div>
     </div>
   );

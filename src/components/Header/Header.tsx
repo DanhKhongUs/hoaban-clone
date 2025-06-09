@@ -11,14 +11,13 @@ import { faBars, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 import Search from "../Search/Search";
 import routes from "~/routes/routes";
-import Navbar from "./Navbar"; // Navbar (desktop)
-import NavbarToggle from "./NavbarToggle"; // NavbarToggle (mobile)
+import Navbar from "./Navbar";
+import NavbarToggle from "./NavbarToggle";
 
 function Header() {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 856);
 
-  // Theo dõi kích thước màn hình
   useEffect(() => {
     const handleResize = () => {
       setIsDesktop(window.innerWidth >= 856);
@@ -73,12 +72,10 @@ function Header() {
               <img
                 src="/logo.png"
                 alt="logo"
-                className="h-24 w-24 object-contain"
+                className="h-20 w-20 object-contain"
               />
-              <p className="text-sm leading-relaxed text-gray-800 hidden sm:block ">
-                <span className="text-[#c7aa62] font-semibold">
-                  SẠCH - NGON - CHẤT LƯỢNG
-                </span>
+              <p className="text-[10px] leading-relaxed text-gray-800 hidden sm:block  font-semibold">
+                SẠCH - NGON - CHẤT LƯỢNG
               </p>
             </Link>
 

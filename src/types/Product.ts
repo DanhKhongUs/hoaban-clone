@@ -3,7 +3,7 @@ export interface Product {
   name: string;
   price: number;
   img: string;
-  soldOut: boolean;
+  soldOut?: boolean;
   tag?: string;
   description?: string;
 }
