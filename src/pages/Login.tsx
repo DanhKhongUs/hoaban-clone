@@ -1,13 +1,16 @@
 import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
+import routes from "~/routes/routes";
 
 function Login() {
   return (
     <div className="bg-[#fdfbf5] pb-10 px-4 sm:px-6 lg:px-8 text-[#4a4a4a] max-w-screen-xl mx-auto">
       {/* Facebook Login */}
       <div className="flex justify-center py-8 gap-4">
-        <button className="bg-[#3b5998] text-white font-semibold py-2 px-4 rounded-2xl flex items-center gap-2 transform hover:scale-105 transition-all duration-300 shadow-sm">
-          <FontAwesomeIcon icon={faFacebookF} /> LOGIN WITH FACEBOOK
+        <button className="bg-[#3b5998] text-white font-semibold py-3 px-6 rounded-full flex items-center gap-3 hover:scale-105 transition-transform duration-300 shadow-md">
+          <FontAwesomeIcon icon={faFacebookF} />
+          <span className="uppercase text-sm">Login with Facebook</span>
         </button>
       </div>
 
@@ -24,6 +27,7 @@ function Login() {
             <input
               type="text"
               className="w-full border border-[#dcdcdc] px-3 py-2 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-[#3c3c3c]"
+              placeholder="Nhập tên tài khoản..."
             />
           </div>
           <div className="mb-4">
@@ -33,6 +37,7 @@ function Login() {
             <input
               type="password"
               className="w-full border border-[#dcdcdc] px-3 py-2 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-[#3c3c3c]"
+              placeholder="Nhập mật khẩu..."
             />
           </div>
           <div className="mb-4 flex items-center space-x-2">
@@ -45,9 +50,12 @@ function Login() {
             ĐĂNG NHẬP
           </button>
           <div className="mt-4">
-            <a href="#" className="text-blue-500 font-medium hover:underline">
+            <Link
+              to={routes.lostpassword}
+              className="text-blue-500 font-medium hover:underline"
+            >
               Quên mật khẩu?
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -61,6 +69,7 @@ function Login() {
             <input
               type="email"
               className="w-full border border-[#dcdcdc] px-3 py-2 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-[#3c3c3c]"
+              placeholder="Nhập email..."
             />
           </div>
           <p className="text-sm text-[#4a4a4a] mb-4">

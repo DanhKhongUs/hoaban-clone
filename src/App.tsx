@@ -13,6 +13,7 @@ import CallNowButton from "./components/CallNowButton";
 import routes from "./routes/routes";
 import ScrollToTop from "./components/ScrollToTop";
 import Checkout from "./pages/CheckOut";
+import LostPassword from "./pages/LostPassword";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
         <Route path={routes.login} element={<Login />} />
         <Route path={routes.cart} element={<Cart />} />
         <Route path={routes.checkout} element={<Checkout />} />
+        <Route path={routes.lostpassword} element={<LostPassword />} />
       </Routes>
 
       <CallNowButton />

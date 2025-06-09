@@ -7,6 +7,7 @@ import Combo from "~/pages/Combo";
 import Login from "~/pages/Login";
 import Cart from "~/pages/Cart";
 import Checkout from "~/pages/CheckOut";
+import LostPassword from "~/pages/LostPassword";
 
 const publicRoutes = [
   { path: routes.home, component: Home },
@@ -17,6 +18,7 @@ const publicRoutes = [
   { path: routes.login, component: Login },
   { path: routes.cart, component: Cart },
   { path: routes.checkout, component: Checkout },
+  { path: routes.lostpassword, component: LostPassword },
 ];
 
 const privateRoutes = [];

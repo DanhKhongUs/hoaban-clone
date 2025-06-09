@@ -7,5 +7,6 @@ const routes = {
   login: "/login",
   cart: "/cart",
   checkout: "/checkout",
+  lostpassword: "/lostpassword",
 };
 export default routes;
