@@ -33,7 +33,7 @@ function Contact() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-10 mb-12">
+          <div className="grid ct:grid-cols-2 gap-10 mb-12">
             <div className="space-y-4">
               <h3 className="text-lg font-bold text-[#4a4a4a]">
                 LIÊN HỆ VỚI CHÚNG TÔI
@@ -66,11 +66,14 @@ function Contact() {
               </div>
               <div>
                 <iframe
-                  width="420"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.543850228222!2d105.840999!3d21.010017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab7a3dfb1d2f%3A0xa1d2b2a745132d77!2sHOA%20BAN%20FOOD!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
+                  width="400"
                   height="280"
-                  src="//maps.google.com/maps?q=HOA%20BAN%20FOOD&amp;output=embed"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
                   title="HOA BAN FOOD"
-                ></iframe>
+                />
               </div>
             </div>
 

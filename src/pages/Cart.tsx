@@ -63,19 +63,48 @@ const Cart = () => {
             <hr className="w-8 border border-[#c0b49f]" />
           </h2>
           <div>
-            <div className="grid grid-cols-6 font-bold text-sm uppercase text-[#4a4a4a] border-b py-2">
+            <div className="hidden sm:grid grid-cols-6 font-bold text-sm uppercase text-[#4a4a4a] border-b py-2">
               <div className="col-span-1 text-center"></div>
               <div className="col-span-2">Sản phẩm</div>
               <div className="col-span-1 text-center">Giá</div>
               <div className="col-span-1 text-center">Số lượng</div>
               <div className="col-span-1 text-right pr-2">Tạm tính</div>
             </div>
+
             {cart.map(({ product, quantity }) => (
               <div
                 key={product.id}
-                className="grid grid-cols-6 items-center py-4 border-b text-[#4a4a4a]"
+                className="grid grid-cols-1 sm:grid-cols-6 items-start sm:items-center py-4 border-b text-[#4a4a4a] gap-4"
               >
-                <div className="col-span-1 flex justify-center">
+                <div className="sm:col-span-2 flex items-start gap-4">
+                  <img
+                    src={product.img}
+                    alt={product.name}
+                    className="w-20 h-16 object-cover"
+                  />
+                  <div className="flex-1">
+                    <p className="font-semibold uppercase text-sm">
+                      {product.name}
+                    </p>
+
+                    <div className="sm:hidden mt-2 text-sm space-y-1">
+                      <p>Giá: {product.price.toLocaleString()}₫</p>
+                      <p>Số lượng: {quantity}</p>
+                      <p className="font-semibold">
+                        Tạm tính: {(product.price * quantity).toLocaleString()}₫
+                      </p>
+
+                      <button
+                        onClick={() => removeFromCart(product.id)}
+                        className="mt-2 text-gray-600 text-sm flex items-center gap-1"
+                      >
+                        <FontAwesomeIcon icon={faTrash} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="hidden sm:flex justify-center">
                   <button
                     onClick={() => removeFromCart(product.id)}
                     className="text-gray-500 hover:text-gray-600 text-xl"
@@ -83,29 +112,16 @@ const Cart = () => {
                     <FontAwesomeIcon icon={faTrash} />
                   </button>
                 </div>
-
-                <div className="col-span-2 flex items-center gap-4">
-                  <img
-                    src={product.img}
-                    alt={product.name}
-                    className="w-20 h-16 object-cover"
-                  />
-                  <p className="font-semibold uppercase text-sm">
-                    {product.name}
-                  </p>
-                </div>
-
-                <div className="col-span-1 text-center font-medium">
+                <div className="hidden sm:block text-center font-medium">
                   {product.price.toLocaleString()}₫
                 </div>
 
-                <div className="col-span-1 flex justify-center">
+                <div className="hidden sm:flex justify-center">
                   <div className="flex border border-gray-300 rounded text-base">
                     <span className="px-3">{quantity}</span>
                   </div>
                 </div>
-
-                <div className="col-span-1 text-right font-medium">
+                <div className="hidden sm:block text-right font-medium">
                   {(product.price * quantity).toLocaleString()}₫
                 </div>
               </div>

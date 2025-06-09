@@ -1,6 +1,6 @@
 import { faClock, faHouse, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { allProducts } from "~/data/allProduct";
 import ProductCard from "~/components/ProductCard";
 import Pagination from "~/components/PaginationProps";
@@ -9,6 +9,14 @@ function ProductPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 8;
   const totalPages = Math.ceil(allProducts.length / ITEMS_PER_PAGE);
+
+  const productListRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (productListRef.current) {
+      productListRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [currentPage]);
 
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const visibleProducts = allProducts.slice(
@@ -25,12 +33,7 @@ function ProductPage() {
           <hr className="w-12 border-none rounded mb-6 bg-[#c0b49f] h-[3px]" />
         </h2>
         <div className="text-sm text-gray-700">
-          <span>
-            Hiển thị {startIndex + 1}–
-            {Math.min(startIndex + ITEMS_PER_PAGE, allProducts.length)} của{" "}
-            <strong>{allProducts.length}</strong> kết quả
-          </span>
-          <select className="border border-gray-300 bg-white px-3 py-2 rounded text-sm ml-4 focus:outline-none focus:ring-1 focus:ring-gray-400">
+          <select className="border border-gray-300 bg-white px-2 py-2 rounded text-sm focus:outline-none focus:ring-1 focus:ring-gray-400">
             <option>Thứ tự theo mức độ phổ biến</option>
             <option>Mới nhất</option>
             <option>Giá: thấp đến cao</option>
@@ -100,7 +103,7 @@ function ProductPage() {
       </div>
 
       {/* Danh sách sản phẩm */}
-      <div className="px-4">
+      <div ref={productListRef} className="px-4">
         {visibleProducts.length === 0 ? (
           <p className="text-center text-gray-500 mt-6">
             Không có sản phẩm nào.
