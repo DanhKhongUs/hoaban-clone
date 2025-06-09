@@ -1,11 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import { CatalogItem } from "~/data/productCatalog";
 import { productCardConfig } from "~/config/productCardConfig";
+import routes from "~/routes/routes";
 
 const catalogList = [
-  { id: 0, name: "MẬT ONG & TAM THẤT", link: "dink" },
-  { id: 1, name: "THỰC PHẨM & GIA VỊ", link: "food" },
-  { id: 2, name: "RƯỢU & ĐỒ NGÂM RƯỢU", link: "herb" },
+  { id: 0, name: "MẬT ONG & TAM THẤT", to: routes.product },
+  { id: 1, name: "THỰC PHẨM & GIA VỊ", to: routes.product },
+  { id: 2, name: "RƯỢU & ĐỒ NGÂM RƯỢU", to: routes.product },
 ];
 
 function ProductCatalog() {
@@ -25,10 +26,7 @@ function ProductCatalog() {
         <ul className="space-y-2 text-sm text-[#444]">
           {catalogList.map((item) => (
             <li key={item.id} className="w-full border-b pb-2 text-lg">
-              <Link
-                to={`/product/${item.link}`}
-                className="hover:text-yellow-700"
-              >
+              <Link to={item.to} className="hover:text-yellow-700">
                 {item.name}
               </Link>
             </li>

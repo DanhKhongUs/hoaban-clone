@@ -6,4 +6,5 @@ export interface Product {
   soldOut?: boolean;
   tag?: string;
   description?: string;
+  quantity?: number;
 }

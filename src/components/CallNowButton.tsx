@@ -30,7 +30,7 @@ export default function CallNowButton() {
 
   return (
     <div
-      className="fixed right-4 md:right-8 bottom-4 md:bottom-8 flex flex-col items-center space-y-3 z-50"
+      className="fixed right-4 md:right-12 bottom-4 md:bottom-8 flex flex-col items-center space-y-3 z-50"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -57,7 +57,7 @@ export default function CallNowButton() {
       </div>
 
       {/* Nút chính - điện thoại */}
-      <div className="bg-pink-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl transform hover:scale-110 transition-all duration-300 ">
+      <div className="bg-pink-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl transform hover:scale-110 transition-all duration-300 ">
         <FontAwesomeIcon icon={faPhone} className="w-6 h-6" />
       </div>
     </div>

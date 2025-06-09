@@ -6,6 +6,7 @@ import Contact from "~/pages/Contact";
 import Combo from "~/pages/Combo";
 import Login from "~/pages/Login";
 import Cart from "~/pages/Cart";
+import Checkout from "~/pages/CheckOut";
 
 const publicRoutes = [
   { path: routes.home, component: Home },
@@ -15,6 +16,7 @@ const publicRoutes = [
   { path: routes.contact, component: Contact },
   { path: routes.login, component: Login },
   { path: routes.cart, component: Cart },
+  { path: routes.checkout, component: Checkout },
 ];
 
 const privateRoutes = [];

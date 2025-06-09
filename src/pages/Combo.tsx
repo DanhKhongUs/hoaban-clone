@@ -14,7 +14,7 @@ function Combo() {
       {/* Combo Section Title */}
       <div className="w-full px-4 sm:px-6 lg:px-8 max-w-[1440px] mt-6">
         <SectionTitle
-          title="≡ COMBO SẢN PHẨM"
+          title="COMBO SẢN PHẨM"
           subtitle="Các sản phẩm combo – nhiều hơn, tiết kiệm & tiện lợi hơn cho Quý anh chị lựa chọn và sử dụng cho Gia Đình mình!"
         />
       </div>
@@ -27,7 +27,7 @@ function Combo() {
       {/* Single Product Section Title */}
       <div className="w-full px-4 sm:px-6 lg:px-8 max-w-[1440px] mt-10">
         <SectionTitle
-          title="≡ SẢN PHẨM RIÊNG LẺ"
+          title="SẢN PHẨM RIÊNG LẺ"
           subtitle="Hoặc chọn cho gia đình mình từng sản phẩm riêng lẻ phù hợp nhất như dưới đây!"
         />
       </div>

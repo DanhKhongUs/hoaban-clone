@@ -7,12 +7,11 @@ function Footer() {
   return (
     <footer className="bg-[#fefaf1] max-w-screen-xl mx-auto border-t border-[#e5e5e5]">
       <div className="px-6 py-10 flex flex-col md:flex-row md:justify-between gap-10">
-        {/* Cột 1: Liên hệ */}
         <div className="flex-1 min-w-[250px]">
           <h3 className="text-lg font-bold mb-2 text-[#4a4a4a]">
             LIÊN HỆ VỚI CHÚNG TÔI
           </h3>
-          <hr className="w-8 border border-[#f1bfd3] mb-4" />
+          <hr className="w-8 border border-[#c0b49f] mb-4" />
           <p className="mb-2 text-base text-gray-900">
             <FontAwesomeIcon icon={faPhone} className="text-[#4a4a4a] mr-3" />
             <span className="text-[#4a4a4a] font-bold">
@@ -37,19 +36,17 @@ function Footer() {
           </div>
         </div>
 
-        {/* Cột 2: Facebook */}
         <div className="flex-1 min-w-[250px]">
           <h3 className="text-lg font-bold mb-2 text-[#4a4a4a]">FACEBOOK</h3>
-          <hr className="w-8 border border-[#f1bfd3] mb-4" />
+          <hr className="w-8 border border-[#c0b49f] mb-4" />
           <div className="bg-gray-100 h-52 rounded-xl shadow-inner flex items-center justify-center text-gray-400 text-sm">
             Facebook Plugin (chèn sau)
           </div>
         </div>
 
-        {/* Cột 3: YouTube */}
         <div className="flex-1 min-w-[250px]">
           <h3 className="text-lg font-bold mb-2 text-[#4a4a4a]">YOUTUBE</h3>
-          <hr className="w-8 border border-[#f1bfd3] mb-4" />
+          <hr className="w-8 border border-[#c0b49f] mb-4" />
           <div className="space-y-6">
             {[1, 2].map((_, index) => (
               <Link
@@ -60,7 +57,7 @@ function Footer() {
                 className="flex items-center gap-4 hover:opacity-90 transition"
               >
                 <img
-                  src=""
+                  src="https://yt3.ggpht.com/ytc/AIdro_nJm8tQFtYxW-vEA1LronkpQfqew5ei43QbBF1wyo0f8I8=s48-c-k-c0x00ffffff-no-rj"
                   alt="HOA BAN CAMP"
                   className="w-14 h-14 rounded-md object-cover"
                 />

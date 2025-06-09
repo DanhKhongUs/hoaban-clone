@@ -3,41 +3,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faHouse } from "@fortawesome/free-solid-svg-icons";
 import SectionTitle from "~/components/SectionTitle";
 import { Connect } from "~/data/connectItem";
-import { useState } from "react";
 import ProductCatalog from "~/components/ProductCatalog";
-
-interface ContactProps {
-  name: string;
-  email: string;
-  message: string;
-}
+import FeedbackForm from "~/components/FeedbackForm";
 
 function Contact() {
-  const [form, setForm] = useState<ContactProps>({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
   return (
-    <div className="bg-[#fdfbf5] min-h-screen pb-10 px-4 sm:px-6 lg:px-8 text-[#4a4a4a] max-w-screen-xl mx-auto">
+    <div className="bg-[#fdfbf5] min-h-screen pb-10  text-[#4a4a4a] max-w-screen-xl mx-auto">
       <div className="w-full mb-10">
         <FoodSlider />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-10 px-4 sm:px-6 lg:px-8">
         {/* === MAIN CONTENT === */}
-        <div>
+        <div className="md:pr-6 md:border-r md:border-gray-300">
           <div className="space-y-6 text-base leading-relaxed text-gray-800 mb-10">
             <p>
               Kính mời quý anh chị ghé thăm{" "}
@@ -96,50 +74,16 @@ function Contact() {
               </div>
             </div>
 
-            <div className="md:w-full">
+            <div className="md:w-full ">
               <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-[#4a4a4a]">
                 TRẢ LỜI
               </h3>
               <hr className="w-12 border-none rounded mb-6 bg-[#c0b49f] h-[3px]" />
-              <form className="flex flex-col gap-4">
-                <textarea
-                  name="message"
-                  placeholder="Message"
-                  value={form.message}
-                  onChange={handleChange}
-                  rows={5}
-                  className="p-3 rounded text-gray-900 bg-white outline-none border border-gray-300"
-                  required
-                />
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  value={form.name}
-                  onChange={handleChange}
-                  className="p-3 rounded text-gray-900 bg-white outline-none border border-gray-300"
-                  required
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={form.email}
-                  onChange={handleChange}
-                  className="p-3 rounded text-gray-900 bg-white outline-none border border-gray-300"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="bg-[#ff4d4d] text-white py-3 px-6 rounded hover:bg-[#ff3333] transition duration-300 self-start sm:self-end"
-                >
-                  PHẢN HỒI
-                </button>
-              </form>
+              <FeedbackForm />
             </div>
           </div>
 
-          <SectionTitle title="≡ KẾT NỐI VỚI CHÚNG TÔI TRÊN..." />
+          <SectionTitle title="KẾT NỐI VỚI CHÚNG TÔI TRÊN..." />
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-6 mb-12">
             {Connect.map((item) => (
               <a
@@ -166,7 +110,7 @@ function Contact() {
             ))}
           </div>
 
-          <SectionTitle title="≡ TÀI KHOẢN NGÂN HÀNG..." />
+          <SectionTitle title="TÀI KHOẢN NGÂN HÀNG..." />
           <div className="text-base leading-relaxed text-gray-800 space-y-4">
             <p>
               Đối với quý khách chuyển khoản thanh toán qua Ngân hàng, vui lòng
@@ -188,8 +132,9 @@ function Contact() {
             </div>
           </div>
         </div>
-
-        <ProductCatalog />
+        <div>
+          <ProductCatalog />
+        </div>
       </div>
     </div>
   );

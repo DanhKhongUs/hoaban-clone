@@ -12,6 +12,7 @@ import ProductDetail from "./pages/ProductDetail";
 import CallNowButton from "./components/CallNowButton";
 import routes from "./routes/routes";
 import ScrollToTop from "./components/ScrollToTop";
+import Checkout from "./pages/CheckOut";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/cart/:id" element={<ProductDetail />} />
         <Route path={routes.login} element={<Login />} />
         <Route path={routes.cart} element={<Cart />} />
+        <Route path={routes.checkout} element={<Checkout />} />
       </Routes>
 
       <CallNowButton />

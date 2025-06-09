@@ -30,7 +30,7 @@ function Introduce() {
           />
         </div>
 
-        <p className="text-base leading-relaxed text-gray-800 mb-6 sm:mb-8">
+        <p className="text-center leading-relaxed text-gray-800 mb-6 sm:mb-8">
           <span className="text-[#c7aa62] font-semibold"> HOA BAN FOOD™ </span>{" "}
           không đơn thuần chỉ là kinh doanh các sản vật Tây Bắc, mà còn mong
           muốn gắn kết, giới thiệu văn hóa, ẩm thực và cuộc sống đơn giản của bà
@@ -77,13 +77,13 @@ function Introduce() {
 
         <div className="w-full overflow-hidden shadow mb-10 rounded-xl">
           <img
-            src="https://hoabanfood.com/wp-content/uploads/Di-va-viet-3-1100x469.jpg"
+            src="https://hoabanfood.com/wp-content/uploads/To-Ong-Rung-Tay-Bac-2024-1.jpg"
             alt="Header"
             className="w-full h-[200px] sm:h-[280px] md:h-[360px] lg:h-[480px] object-cover"
           />
         </div>
 
-        <p className="text-base leading-relaxed text-gray-800 mb-6 sm:mb-8">
+        <p className="text-center leading-relaxed text-gray-800 mb-6 sm:mb-8">
           Chị em phụ nữ nơi những bản làng Tây Bắc, thương con, chiều chồng, mến
           khách và cực kì chịu khó. Là hậu phương vững, làm tất cả những công
           việc hoàn thiện sản phẩm mà anh em chúng tôi khai thác được! Từ những
@@ -95,14 +95,14 @@ function Introduce() {
 
         <div className="w-full overflow-hidden shadow mb-10 rounded-xl">
           <img
-            src="https://hoabanfood.com/wp-content/uploads/Di-va-viet-3-1100x469.jpg"
+            src="https://hoabanfood.com/wp-content/uploads/Khai-Thac-Mat-Ong-Rung-Tay-Bac-3.jpg"
             alt="Header"
             className="w-full h-[200px] sm:h-[280px] md:h-[360px] lg:h-[480px] object-cover"
           />
         </div>
 
         {/* Chữ ký & liên hệ */}
-        <div className="text-right mb-6 sm:mb-8">
+        <div className="text-left mb-6 sm:mb-8">
           <p className="italic">Trân Trọng</p>
           <p className="font-bold text-[#c7aa62]">Tập thể HOA BAN FOOD™</p>
           <div className="text-base mt-2">

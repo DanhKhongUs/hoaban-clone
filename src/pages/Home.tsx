@@ -38,13 +38,13 @@ function Home() {
 
       {/* Other Products Section */}
       <div className="w-full px-4 sm:px-6 md:px-8 max-w-screen-xl mt-4">
-        <SectionTitle title="≡ CÁC SẢN PHẨM KHÁC" />
+        <SectionTitle title="CÁC SẢN PHẨM KHÁC" />
         <ProductGrid products={products} />
       </div>
 
       {/* Souvenir Products Section */}
       <div className="w-full bg-[#fdfbf5] py-4 px-4 sm:px-6 md:px-10">
-        <SectionTitle title="≡ QUÀ LƯU NIỆM" />
+        <SectionTitle title="QUÀ LƯU NIỆM" />
         <section className="max-w-7xl mx-auto grid grid-cols-1 md:px-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {souvenirItem.map((item: Product) => (
             <SouvenirCard

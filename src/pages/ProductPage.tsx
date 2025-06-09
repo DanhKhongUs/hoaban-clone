@@ -22,6 +22,7 @@ function ProductPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 max-w-7xl mx-auto p-4">
         <h2 className="text-2xl font-semibold text-[#4a4a4a] mb-2 md:mb-0">
           SẢN PHẨM
+          <hr className="w-12 border-none rounded mb-6 bg-[#c0b49f] h-[3px]" />
         </h2>
         <div className="text-sm text-gray-700">
           <span>
