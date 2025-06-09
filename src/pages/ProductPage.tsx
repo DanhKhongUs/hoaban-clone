@@ -1,6 +1,6 @@
 import { faClock, faHouse, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { allProducts } from "~/data/allProduct";
 import ProductCard from "~/components/ProductCard";
 import Pagination from "~/components/PaginationProps";
@@ -10,12 +10,8 @@ function ProductPage() {
   const ITEMS_PER_PAGE = 8;
   const totalPages = Math.ceil(allProducts.length / ITEMS_PER_PAGE);
 
-  const productListRef = useRef<HTMLDivElement | null>(null);
-
   useEffect(() => {
-    if (productListRef.current) {
-      productListRef.current.scrollIntoView({ behavior: "smooth" });
-    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
 
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -103,7 +99,7 @@ function ProductPage() {
       </div>
 
       {/* Danh sách sản phẩm */}
-      <div ref={productListRef} className="px-4">
+      <div className="px-4">
         {visibleProducts.length === 0 ? (
           <p className="text-center text-gray-500 mt-6">
             Không có sản phẩm nào.
