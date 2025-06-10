@@ -1,3 +1,5 @@
+const { animateFill } = require("tippy.js");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -16,6 +18,19 @@ module.exports = {
         xl: "1280px",
         "2xl": "1536px",
         ct: "1150px",
+      },
+      animation: {
+        spinner: "spinner 0.6s linear infinite",
+      },
+      keyframes: {
+        spinner: {
+          from: {
+            transform: "translateY(-50%) rotate(0)",
+          },
+          to: {
+            transform: "translateY(-50%) rotate(360deg)",
+          },
+        },
       },
     },
   },

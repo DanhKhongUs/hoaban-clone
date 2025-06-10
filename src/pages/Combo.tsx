@@ -1,7 +1,7 @@
 import FoodSlider from "~/components/FoodSlider";
 import ProductGrid from "~/components/ProductGrid";
 import SectionTitle from "~/components/SectionTitle";
-import { products } from "~/data/products";
+import { Products } from "~/data/products";
 
 function Combo() {
   return (
@@ -21,7 +21,7 @@ function Combo() {
 
       {/* Combo Products */}
       <div className="w-full px-4 sm:px-6 lg:px-8 max-w-[1440px] mt-4">
-        <ProductGrid products={products} />
+        <ProductGrid products={Products} />
       </div>
 
       {/* Single Product Section Title */}
@@ -34,7 +34,7 @@ function Combo() {
 
       {/* Single Products */}
       <div className="w-full px-4 sm:px-6 lg:px-8 max-w-[1440px] mt-4">
-        <ProductGrid products={products} />
+        <ProductGrid products={Products} />
       </div>
     </div>
   );

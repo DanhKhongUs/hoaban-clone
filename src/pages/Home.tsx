@@ -1,10 +1,10 @@
 import FoodSlider from "~/components/FoodSlider";
-import { souvenirItem } from "~/data/souvenir";
+import { SouvenirItem } from "~/data/souvenir";
 import ProductGrid from "~/components/ProductGrid";
 import SectionTitle from "~/components/SectionTitle";
 import { Product } from "~/types/Product";
 import SouvenirCard from "~/components/SouvenirCard";
-import { products } from "~/data/products";
+import { Products } from "~/data/products";
 
 function Home() {
   return (
@@ -28,7 +28,7 @@ function Home() {
 
       {/* Gift Products Section */}
       <div className="w-full px-4 sm:px-6 md:px-8 max-w-screen-xl">
-        <ProductGrid products={products} />
+        <ProductGrid products={Products} />
       </div>
 
       {/* Banner Image Section */}
@@ -39,14 +39,14 @@ function Home() {
       {/* Other Products Section */}
       <div className="w-full px-4 sm:px-6 md:px-8 max-w-screen-xl mt-4">
         <SectionTitle title="CÁC SẢN PHẨM KHÁC" />
-        <ProductGrid products={products} />
+        <ProductGrid products={Products} />
       </div>
 
       {/* Souvenir Products Section */}
       <div className="w-full bg-[#fdfbf5] py-4 px-4 sm:px-6 md:px-10">
         <SectionTitle title="QUÀ LƯU NIỆM" />
         <section className="max-w-7xl mx-auto grid grid-cols-1 md:px-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {souvenirItem.map((item: Product) => (
+          {SouvenirItem.map((item: Product) => (
             <SouvenirCard
               key={item.id}
               souvenir={{ ...item, type: "souvenir" }}

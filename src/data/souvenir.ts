@@ -1,6 +1,6 @@
 import { Product } from "~/types/Product";
 
-export const souvenirItem: Product[] = [
+export const SouvenirItem: Product[] = [
   {
     id: 8,
     name: "ĐŨA TRE SÔNG ĐÀ | 10 Đôi",
