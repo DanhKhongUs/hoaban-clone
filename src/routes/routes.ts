@@ -8,5 +8,7 @@ const routes = {
   cart: "/cart",
   checkout: "/checkout",
   lostpassword: "/lostpassword",
+  myaccount: "/myaccount",
+  dashboard: "/dashboard",
 };
 export default routes;

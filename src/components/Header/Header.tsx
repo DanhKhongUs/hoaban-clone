@@ -1,8 +1,8 @@
+// Header.tsx
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import HeadlessTippy from "@tippyjs/react/headless";
-
 import {
   faFacebookF,
   faTiktok,
@@ -21,36 +21,23 @@ import NavbarToggle from "./NavbarToggle";
 import { useCart } from "~/context/CartContext";
 
 const currentUser = true;
+
 const MENU_ITEMS = [
-  {
-    title: "Đơn hàng",
-    to: "",
-  },
-  {
-    title: "Tải xuống",
-    to: "",
-  },
-  {
-    title: "Địa chỉ",
-    to: "",
-  },
-  {
-    title: "Tài khoản",
-    to: "",
-  },
+  { title: "Đơn hàng", to: "" },
+  { title: "Tải xuống", to: "" },
+  { title: "Địa chỉ", to: "" },
+  { title: "Tài khoản", to: "" },
 ];
 
 function Header() {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 856);
-
   const { cart, removeFromCart } = useCart();
 
   useEffect(() => {
     const handleResize = () => {
       setIsDesktop(window.innerWidth >= 856);
     };
-
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -68,7 +55,7 @@ function Header() {
           <div>
             HOTLINE: <strong className="text-[#1d1d1d]">0914.268.535</strong>
           </div>
-          <div className="flex items-center justify-center gap-2">
+          <div className="flex items-center gap-2">
             <a href="#" className="text-base hover:text-[#c0b49f]">
               <FontAwesomeIcon icon={faFacebookF} />
             </a>
@@ -87,12 +74,12 @@ function Header() {
 
       {/* Sticky Header */}
       <div className="sticky top-0 z-50 bg-[#fdfbf5] shadow-md max-w-screen-xl mx-auto">
-        <div className="border-b border-[#e0dacb] px-3 md:px-4 py-2 md:py-3 flex flex-col gap-2 md:flex-row md:justify-between md:items-center">
-          {/* Mobile view: Logo + Menu + Cart */}
-          <div className="flex items-center justify-between w-full md:hidden ">
+        <div className="border-b border-[#e0dacb] px-3 md:px-4  flex flex-col md:flex-row md:justify-between md:items-center">
+          {/* Mobile: Logo + Menu + Cart */}
+          <div className="flex items-center justify-between w-full md:hidden">
             <button
               onClick={() => setIsNavbarOpen(true)}
-              className="text-[#4a4a4a] focus:outline-none"
+              className="text-[#4a4a4a]"
             >
               <FontAwesomeIcon icon={faBars} size="xl" />
             </button>
@@ -105,11 +92,8 @@ function Header() {
               <img
                 src="/logo.png"
                 alt="logo"
-                className="h-20 w-20 object-contain"
+                className="w-20 h-20 object-contain"
               />
-              <p className="text-[10px] leading-relaxed text-gray-800 hidden sm:block  font-semibold">
-                SẠCH - NGON - CHẤT LƯỢNG
-              </p>
             </Link>
 
             <Link
@@ -120,167 +104,161 @@ function Header() {
             </Link>
           </div>
 
-          {/* Logo  */}
+          {/* Search mobile */}
+          {!isDesktop && (
+            <div className="w-full px-2 pb-2">
+              <Search />
+            </div>
+          )}
+
+          {/* Desktop: Logo */}
           <div className="hidden md:flex justify-center md:w-28">
             <Link to={routes.home} onClick={() => window.scrollTo(0, 0)}>
               <img
                 src="/logo.png"
                 alt="logo"
-                className="h-16 w-16 md:h-28 md:w-28 object-contain"
+                className="h-28 w-28 object-contain"
               />
             </Link>
           </div>
 
-          {/* Search  */}
-          <div className="hidden md:block md:flex-1 max-w-[600px]">
-            <Search />
+          {/* Search desktop */}
+          <div className="hidden md:flex md:flex-1 justify-center px-4">
+            <div className="w-full max-w-[600px]">
+              <Search />
+            </div>
           </div>
 
-          {/* Login + Cart  */}
-          <div className="hidden md:flex items-center gap-4 text-sm md:text-base text-[#4a4a4a] ">
+          {/* Account + Cart desktop */}
+          <div className="hidden md:flex items-center gap-4 text-sm md:text-base text-[#4a4a4a] pr-4">
             {currentUser ? (
-              <div>
-                <HeadlessTippy
-                  interactive
-                  offset={[-50, 6]}
-                  placement="bottom"
-                  render={() => (
-                    <div className="bg-white rounded-lg shadow-lg border border-gray-200 w-56 pt-4">
-                      <div className="border-b px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                        <Link
-                          to=""
-                          className="w-full text-left font-medium text-gray-800"
-                        >
-                          UserName
-                        </Link>
-                      </div>
-                      <div>
-                        {MENU_ITEMS.map((item, index) => (
-                          <Link
-                            key={index}
-                            to={item.to}
-                            className="flex items-center gap-2 border-b px-4 py-2 hover:bg-gray-100 text-gray-800"
-                          >
-                            {item.title}
-                          </Link>
-                        ))}
-                      </div>
-                      <div className="px-4 py-4 font-semibold hover:bg-gray-100 rounded-lg cursor-pointer">
-                        <button className="w-full text-left text-gray-800">
-                          <FontAwesomeIcon
-                            icon={faRightFromBracket}
-                            className="pr-2"
-                          />
-                          <span>Thoát</span>
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                >
-                  <div className="flex items-center cursor-pointer">
-                    <span className="font-semibold text-gray-700">
-                      Tài khoản
-                    </span>
-                    <img
-                      src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
-                      alt="User"
-                      className="w-10 h-10 border rounded-full object-cover ml-2 mr-2 md:mr-4"
-                    />
-                  </div>
-                </HeadlessTippy>
-              </div>
-            ) : (
-              <>
-                <Link to={routes.login} className="font-semibold ">
-                  Đăng nhập / Đăng ký
-                </Link>
-              </>
-            )}
-
-            <div>
               <HeadlessTippy
                 interactive
+                offset={[-50, 6]}
                 placement="bottom"
-                offset={[-85, 12]}
                 render={() => (
-                  <div>
-                    {cart.length > 0 ? (
-                      <div className="bg-white rounded-lg shadow-xl border w-80 p-5">
-                        <div className="max-h-80 overflow-y-auto space-y-4">
-                          {cart.map((item) => (
-                            <div
-                              key={item.product.id}
-                              className="flex items-start gap-4 border-b pb-4 "
-                            >
+                  <div className="bg-white rounded-lg shadow-lg border w-56 pt-4">
+                    <div className="border-b px-4 py-3 hover:bg-gray-100">
+                      <Link to={routes.myaccount} className="font-medium">
+                        UserName
+                      </Link>
+                    </div>
+                    {MENU_ITEMS.map((item, index) => (
+                      <Link
+                        key={index}
+                        to={item.to}
+                        className="block border-b px-4 py-3 hover:bg-gray-100"
+                      >
+                        {item.title}
+                      </Link>
+                    ))}
+                    <div className="px-4 py-4 font-semibold hover:bg-gray-100">
+                      <button className="w-full text-left text-gray-800">
+                        <FontAwesomeIcon
+                          icon={faRightFromBracket}
+                          className="pr-2"
+                        />
+                        Thoát
+                      </button>
+                    </div>
+                  </div>
+                )}
+              >
+                <Link
+                  to={routes.myaccount}
+                  className="flex items-center cursor-pointer"
+                >
+                  <span className="font-semibold text-gray-700">Tài khoản</span>
+                  <img
+                    src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
+                    alt="User"
+                    className="w-10 h-10 border rounded-full object-cover ml-2"
+                  />
+                </Link>
+              </HeadlessTippy>
+            ) : (
+              <Link to={routes.login} className="font-semibold">
+                Đăng nhập / Đăng ký
+              </Link>
+            )}
+
+            <HeadlessTippy
+              interactive
+              placement="bottom"
+              offset={[-85, 12]}
+              render={() => (
+                <div className="bg-white rounded-lg shadow-xl border w-80 p-5">
+                  {cart.length > 0 ? (
+                    <>
+                      <div className="max-h-80 overflow-y-auto space-y-4">
+                        {cart.map((item) => (
+                          <Link
+                            key={item.product.id}
+                            to={`/cart/${item.product.id}`}
+                          >
+                            <div className="flex items-start gap-4 border-b pb-4">
                               <img
                                 src={item.product.img}
                                 alt={item.product.name}
                                 className="w-16 h-16 object-cover rounded-lg"
                               />
                               <div className="flex-1 space-y-1">
-                                <h4 className=" font-semibold text-gray-800">
+                                <h4 className="font-semibold text-gray-700 hover:text-gray-900">
                                   {item.product.name}
                                 </h4>
-                                <p className=" text-gray-500">
+                                <p className="text-gray-500">
                                   {item.quantity} ×{" "}
                                   {item.product.price.toLocaleString()}₫
                                 </p>
                               </div>
                               <button
                                 onClick={() => removeFromCart(item.product.id)}
-                                className="text-gray-400 hover:text-gray-500 transition"
+                                className="text-gray-400 hover:text-gray-500"
                               >
                                 <FontAwesomeIcon icon={faTrash} />
                               </button>
                             </div>
-                          ))}
-                        </div>
-
-                        <div className="flex justify-center border-b-2 py-4">
-                          <p className=" font-semibold text-gray-700">
-                            Tổng cộng:
-                            <span className="ml-1 text-base text-black">
-                              {total.toLocaleString()}₫
-                            </span>
-                          </p>
-                        </div>
-
-                        <div className="mt-4 flex flex-col gap-2">
-                          <Link to={routes.cart}>
-                            <button className="w-full bg-pink-600 text-white py-2 font-semibold hover:bg-pink-700 transition rounded">
-                              XEM GIỎ HÀNG
-                            </button>
                           </Link>
-                          <Link to={routes.checkout}>
-                            <button className="w-full bg-pink-600 text-white py-2 font-semibold hover:bg-pink-700 transition rounded">
-                              THANH TOÁN
-                            </button>
-                          </Link>
-                        </div>
+                        ))}
                       </div>
-                    ) : (
-                      <div className="bg-white rounded-lg border shadow-xl w-80 p-6 text-center">
-                        <p className="text-gray-500">Giỏ hàng đang trống</p>
+                      <div className="flex justify-between border-t pt-4 font-semibold">
+                        <span>Tổng cộng:</span>
+                        <span className="text-black">
+                          {total.toLocaleString()}₫
+                        </span>
                       </div>
-                    )}
-                  </div>
-                )}
-              >
-                <div className="inline-flex items-center cursor-pointer">
-                  <Link
-                    to={routes.cart}
-                    className="flex items-center gap-2 font-semibold text-gray-700  transition"
-                  >
-                    <FontAwesomeIcon icon={faCartShopping} />
-                    <span>Giỏ hàng / {total.toLocaleString()}₫</span>
-                  </Link>
+                      <div className="mt-4 flex flex-col gap-2">
+                        <Link to={routes.cart}>
+                          <button className="w-full bg-pink-600 text-white py-2 font-semibold hover:bg-pink-700 rounded">
+                            XEM GIỎ HÀNG
+                          </button>
+                        </Link>
+                        <Link to={routes.checkout}>
+                          <button className="w-full bg-pink-600 text-white py-2 font-semibold hover:bg-pink-700 rounded">
+                            THANH TOÁN
+                          </button>
+                        </Link>
+                      </div>
+                    </>
+                  ) : (
+                    <p className="text-center text-gray-500">
+                      Giỏ hàng đang trống
+                    </p>
+                  )}
                 </div>
-              </HeadlessTippy>
-            </div>
+              )}
+            >
+              <div className="flex items-center cursor-pointer">
+                <FontAwesomeIcon icon={faCartShopping} />
+                <span className="ml-2 font-semibold text-gray-700">
+                  Giỏ hàng / {total.toLocaleString()}₫
+                </span>
+              </div>
+            </HeadlessTippy>
           </div>
         </div>
 
-        {/* Navbar render theo màn hình */}
+        {/* Navbar */}
         {isDesktop ? (
           <Navbar />
         ) : (

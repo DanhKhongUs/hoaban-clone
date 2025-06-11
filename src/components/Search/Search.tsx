@@ -62,19 +62,6 @@ function Search() {
     return () => cancel();
   }, [search, debounced, cancel]);
 
-  const highlight = (text: string, keyword: string) => {
-    const parts = text.split(new RegExp(`(${keyword})`, "gi"));
-    return parts.map((part, i) =>
-      part.toLowerCase() === keyword.toLowerCase() ? (
-        <span key={i} className="bg-yellow-100 font-semibold">
-          {part}
-        </span>
-      ) : (
-        <span key={i}>{part}</span>
-      )
-    );
-  };
-
   const handleClear = () => {
     setSearch("");
     setResults([]);
@@ -106,7 +93,7 @@ function Search() {
                   />
                   <div className="flex flex-col">
                     <span className="font-semibold text-sm sm:text-base">
-                      {highlight(item.name, search)}
+                      {item.name}
                     </span>
                     <span className="text-xs sm:text-sm text-gray-600">
                       Giá từ: {item.price}

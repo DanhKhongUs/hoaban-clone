@@ -6,14 +6,22 @@ import Introduce from "./pages/Introduce";
 import ProductPage from "./pages/ProductPage";
 import Contact from "./pages/Contact";
 import Combo from "./pages/Combo";
-import Login from "./pages/Login";
-import Cart from "./pages/Cart";
+import Login from "./pages/LoginPage/Login";
+import Cart from "./pages/CartPage/Cart";
 import ProductDetail from "./pages/ProductDetail";
 import CallNowButton from "./components/CallNowButton";
 import routes from "./routes/routes";
 import ScrollToTop from "./components/ScrollToTop";
-import Checkout from "./pages/CheckOut";
-import LostPassword from "./pages/LostPassword";
+import Checkout from "./pages/CartPage/CheckOut";
+import LostPassword from "./pages/LoginPage/LostPassword";
+import MyAccount from "./pages/AccountPage/MyAccount";
+import Orders from "./pages/AccountPage/Orders";
+import Downloads from "./pages/AccountPage/Downloads";
+import Profile from "./pages/AccountPage/Profile";
+import Address from "./pages/AccountPage/Address";
+import Logout from "./pages/AccountPage/Logout";
+import Dashboard from "./pages/AccountPage/Dashboard";
+import AddAddress from "./pages/AccountPage/AddAddress";
 
 const App = () => {
   return (
@@ -31,6 +39,15 @@ const App = () => {
         <Route path={routes.cart} element={<Cart />} />
         <Route path={routes.checkout} element={<Checkout />} />
         <Route path={routes.lostpassword} element={<LostPassword />} />
+        <Route path={routes.myaccount} element={<MyAccount />}>
+          <Route index element={<Dashboard />} />
+          <Route path="orders" element={<Orders />} />
+          <Route path="downloads" element={<Downloads />} />
+          <Route path="address" element={<Address />} />
+          <Route path="address/add" element={<AddAddress />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="logout" element={<Logout />} />
+        </Route>
       </Routes>
 
       <CallNowButton />

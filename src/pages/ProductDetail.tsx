@@ -19,7 +19,7 @@ function ProductDetail() {
 
   if (!product) {
     return (
-      <div className="text-center py-10 text-red-500 font-semibold">
+      <div className="text-center py-10 text-gray-700 font-semibold max-w-screen-xl mx-auto bg-[#fdfbf5]">
         Sản phẩm không tồn tại.
       </div>
     );
