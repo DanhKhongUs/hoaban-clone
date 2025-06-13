@@ -20,19 +20,19 @@ import Navbar from "./Navbar";
 import NavbarToggle from "./NavbarToggle";
 import { useCart } from "~/context/CartContext";
 
-const currentUser = true;
-
 const MENU_ITEMS = [
-  { title: "Đơn hàng", to: "" },
-  { title: "Tải xuống", to: "" },
-  { title: "Địa chỉ", to: "" },
-  { title: "Tài khoản", to: "" },
+  { title: "Đơn hàng", to: "/myaccount/orders" },
+  { title: "Tải xuống", to: "/myaccount/downloads" },
+  { title: "Địa chỉ", to: "/myaccount/address" },
+  { title: "Tài khoản", to: "/myaccount/profile" },
 ];
 
 function Header() {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 856);
   const { cart, removeFromCart } = useCart();
+
+  const currentUser = false;
 
   useEffect(() => {
     const handleResize = () => {
@@ -46,6 +46,8 @@ function Header() {
     (sum, item) => sum + item.product.price * item.quantity,
     0
   );
+
+  const quantity = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <>
@@ -100,7 +102,14 @@ function Header() {
               to={routes.cart}
               className="text-[#4a4a4a] hover:text-[#c0b49f]"
             >
-              <FontAwesomeIcon icon={faCartShopping} size="xl" />
+              <button className="relative w-8 h-8 flex items-center justify-center text-[20px] text-gray-800">
+                <FontAwesomeIcon icon={faCartShopping} size="xl" />
+                {quantity > 0 && (
+                  <span className="absolute top-[-8px] right-[-8px] bg-pink-700 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">
+                    {quantity}
+                  </span>
+                )}
+              </button>
             </Link>
           </div>
 
@@ -132,50 +141,54 @@ function Header() {
           {/* Account + Cart desktop */}
           <div className="hidden md:flex items-center gap-4 text-sm md:text-base text-[#4a4a4a] pr-4">
             {currentUser ? (
-              <HeadlessTippy
-                interactive
-                offset={[-50, 6]}
-                placement="bottom"
-                render={() => (
-                  <div className="bg-white rounded-lg shadow-lg border w-56 pt-4">
-                    <div className="border-b px-4 py-3 hover:bg-gray-100">
-                      <Link to={routes.myaccount} className="font-medium">
-                        UserName
+              <div>
+                <HeadlessTippy
+                  interactive
+                  offset={[-50, 6]}
+                  placement="bottom"
+                  render={() => (
+                    <div className="bg-white rounded-lg shadow-lg border w-56 pt-4">
+                      <Link to={routes.myaccount} className="font-medium ">
+                        <div className="border-b px-4 py-3 hover:bg-gray-100">
+                          UserName
+                        </div>
                       </Link>
+                      {MENU_ITEMS.map((item, index) => (
+                        <Link
+                          key={index}
+                          to={item.to}
+                          className="block border-b px-4 py-3 hover:bg-gray-100"
+                        >
+                          {item.title}
+                        </Link>
+                      ))}
+                      <div className="px-4 py-4 font-semibold hover:bg-gray-100">
+                        <button className="w-full text-left text-gray-800">
+                          <FontAwesomeIcon
+                            icon={faRightFromBracket}
+                            className="pr-2"
+                          />
+                          Thoát
+                        </button>
+                      </div>
                     </div>
-                    {MENU_ITEMS.map((item, index) => (
-                      <Link
-                        key={index}
-                        to={item.to}
-                        className="block border-b px-4 py-3 hover:bg-gray-100"
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
-                    <div className="px-4 py-4 font-semibold hover:bg-gray-100">
-                      <button className="w-full text-left text-gray-800">
-                        <FontAwesomeIcon
-                          icon={faRightFromBracket}
-                          className="pr-2"
-                        />
-                        Thoát
-                      </button>
-                    </div>
-                  </div>
-                )}
-              >
-                <Link
-                  to={routes.myaccount}
-                  className="flex items-center cursor-pointer"
+                  )}
                 >
-                  <span className="font-semibold text-gray-700">Tài khoản</span>
-                  <img
-                    src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
-                    alt="User"
-                    className="w-10 h-10 border rounded-full object-cover ml-2"
-                  />
-                </Link>
-              </HeadlessTippy>
+                  <Link
+                    to={routes.myaccount}
+                    className="flex items-center cursor-pointer"
+                  >
+                    <span className="font-semibold text-gray-700">
+                      Tài khoản
+                    </span>
+                    <img
+                      src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
+                      alt="User"
+                      className="w-10 h-10 border rounded-full object-cover ml-2"
+                    />
+                  </Link>
+                </HeadlessTippy>
+              </div>
             ) : (
               <Link to={routes.login} className="font-semibold">
                 Đăng nhập / Đăng ký
@@ -185,31 +198,32 @@ function Header() {
             <HeadlessTippy
               interactive
               placement="bottom"
-              offset={[-85, 12]}
+              offset={[-80, 12]}
               render={() => (
                 <div className="bg-white rounded-lg shadow-xl border w-80 p-5">
                   {cart.length > 0 ? (
                     <>
                       <div className="max-h-80 overflow-y-auto space-y-4">
                         {cart.map((item) => (
-                          <Link
-                            key={item.product.id}
-                            to={`/cart/${item.product.id}`}
-                          >
+                          <div key={item.product.id}>
                             <div className="flex items-start gap-4 border-b pb-4">
-                              <img
-                                src={item.product.img}
-                                alt={item.product.name}
-                                className="w-16 h-16 object-cover rounded-lg"
-                              />
+                              <Link to={`cart/${item.product.id}`}>
+                                <img
+                                  src={item.product.img}
+                                  alt={item.product.name}
+                                  className="w-16 h-16 object-cover rounded-lg"
+                                />
+                              </Link>
                               <div className="flex-1 space-y-1">
-                                <h4 className="font-semibold text-gray-700 hover:text-gray-900">
-                                  {item.product.name}
-                                </h4>
-                                <p className="text-gray-500">
-                                  {item.quantity} ×{" "}
-                                  {item.product.price.toLocaleString()}₫
-                                </p>
+                                <Link to={`cart/${item.product.id}`}>
+                                  <h4 className="font-semibold text-gray-700 hover:text-gray-900">
+                                    {item.product.name}
+                                  </h4>
+                                  <p className="text-gray-500">
+                                    {item.quantity} ×{" "}
+                                    {item.product.price.toLocaleString()}₫
+                                  </p>
+                                </Link>
                               </div>
                               <button
                                 onClick={() => removeFromCart(item.product.id)}
@@ -218,7 +232,7 @@ function Header() {
                                 <FontAwesomeIcon icon={faTrash} />
                               </button>
                             </div>
-                          </Link>
+                          </div>
                         ))}
                       </div>
                       <div className="flex justify-between border-t pt-4 font-semibold">
@@ -249,8 +263,15 @@ function Header() {
               )}
             >
               <div className="flex items-center cursor-pointer">
-                <FontAwesomeIcon icon={faCartShopping} />
-                <span className="ml-2 font-semibold text-gray-700">
+                <button className="relative w-10 h-10 flex items-center justify-center text-[20px] text-gray-800">
+                  <FontAwesomeIcon icon={faCartShopping} />
+                  {quantity > 0 && (
+                    <span className="absolute top-0 right-[-2px] bg-pink-700 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">
+                      {quantity}
+                    </span>
+                  )}
+                </button>
+                <span className=" font-semibold text-gray-700">
                   Giỏ hàng / {total.toLocaleString()}₫
                 </span>
               </div>
@@ -262,7 +283,11 @@ function Header() {
         {isDesktop ? (
           <Navbar />
         ) : (
-          <NavbarToggle isOpen={isNavbarOpen} setIsOpen={setIsNavbarOpen} />
+          <NavbarToggle
+            isOpen={isNavbarOpen}
+            setIsOpen={setIsNavbarOpen}
+            currentUser={currentUser}
+          />
         )}
       </div>
     </>

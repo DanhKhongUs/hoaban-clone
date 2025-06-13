@@ -83,9 +83,9 @@ const Cart = () => {
                     className="w-20 h-16 object-cover"
                   />
                   <div className="flex-1">
-                    <p className="font-semibold uppercase text-sm">
+                    <span className="font-semibold uppercase text-sm">
                       {product.name}
-                    </p>
+                    </span>
 
                     <div className="sm:hidden mt-2 text-sm space-y-1">
                       <p>Giá: {product.price.toLocaleString()}₫</p>
